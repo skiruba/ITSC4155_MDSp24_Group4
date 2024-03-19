@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niner Connect - Home</title>
+    <title>Niner Connect - My Friends</title>
     <style>
+        /* CSS styles */
         body {
             font-family: Arial, sans-serif;
             background-color: #0c5c12; /* UNC Charlotte green */
@@ -19,7 +20,7 @@
             position: relative;
         }
         .banner h1 {
-            margin: 0 auto; /* Center the Niner Connect label */
+            margin: 0; /* Remove default margin */
         }
         .pagetitle {
             text-align: center;
@@ -34,21 +35,36 @@
             margin: 20px auto;
             text-align: center;
         }
-        .button {
-            display: block;
-            width: 300px;
-            padding: 20px;
-            margin: 20px auto;
-            background-color: #0c5c12; /* UNC Charlotte green */
-            color: #FFFFFF; /* White text */
-            border: none;
-            border-radius: 10px;
-            text-decoration: none;
-            font-size: 24px;
-            font-weight: bold;
+        .friend {
+            border-bottom: 1px solid #CCCCCC; /* Gray border between friends */
+            padding-bottom: 10px;
+            margin-bottom: 10px; /* Add space between friends */
         }
-        .button:hover {
-            background-color: #08540d; /* Darker green on hover */
+        .friend:last-child {
+            border-bottom: none; /* Remove border for last friend */
+            padding-bottom: 0;
+            margin-bottom: 0; /* Remove space after last friend */
+        }
+        .friend-profile {
+            display: flex;
+            align-items: center;
+        }
+        .friend-profile img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%; /* Rounded profile picture */
+            margin-right: 20px; /* Add space between picture and text */
+        }
+        .friend-info {
+            flex: 1; /* Take up remaining space */
+        }
+        .friend-info h3 {
+            margin: 0; /* Remove default margin for headings */
+            color: #000; /* Black text */
+        }
+        .friend-info p {
+            margin: 5px 0; /* Add space between paragraphs */
+            color: #000; /* Black text */
         }
         .dropdown {
             position: absolute;
@@ -101,6 +117,7 @@
                 <a href="schedule.html">Today's Schedule</a>
                 <a href="addclasses.html">Add Classes</a>
                 <a href="findfriends.html">Find Friends</a>
+                <a href="profile.html">Profile</a>
                 <a href="myfriends.html">My Friends</a>
             </div>
         </div>
@@ -108,16 +125,35 @@
         <img src="profile_icon.png" alt="Profile Icon" class="profile-icon" onclick="window.location.href='profile.html';">
     </div>
     <div class="pagetitle">
-        <h2>Home</h2>
+        <h2>My Friends</h2>
     </div>
     <div class="container">
-        <h2>Welcome to Niner Connect</h2>
-        <a href="schedule.html" class="button">Today's Schedule</a>
-        <a href="addclasses.html" class="button">Add Classes</a>
-        <a href="findfriends.html" class="button">Find Friends</a>
+        <div class="friend">
+            <div class="friend-profile">
+                <img src="profile_icon.png" alt="Profile Picture">
+                <div class="friend-info">
+                    <h3>John Doe</h3>
+                    <p>Classes in Common: Math 101, English 102</p>
+                    <p>Friends Since: January 1, 2023</p>
+                    <p>Free Times: Monday 2:00 PM - 4:00 PM, Wednesday 10:00 AM - 12:00 PM</p>
+                </div>
+            </div>
+        </div>
+        <div class="friend">
+            <div class="friend-profile">
+                <img src="profile_icon.png" alt="Profile Picture">
+                <div class="friend-info">
+                    <h3>Jane Smith</h3>
+                    <p>Classes in Common: Biology 101, Chemistry 102</p>
+                    <p>Friends Since: February 15, 2023</p>
+                    <p>Free Times: Tuesday 1:00 PM - 3:00 PM, Thursday 9:00 AM - 11:00 AM</p>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
+
 
 
 
