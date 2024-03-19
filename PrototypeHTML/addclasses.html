@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niner Connect - Add Classes</title>
+    <style>
+        /* Your existing styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0c5c12; /* UNC Charlotte green */
+            color: #FFFFFF; /* White text */
+            margin: 0;
+            padding: 0;
+        }
+        .banner {
+            background-color: #737706; /* UNC Charlotte green */
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .banner h1 {
+            margin: 0; /* Reset margin */
+        }
+        .dropdown {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+        }
+        .dropdown-icon {
+            font-size: 24px;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 5px 0;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .profile-icon {
+            position: absolute;
+            top: 10px;
+            right: 50px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .pagetitle {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .add-form {
+            background-color: #FFFFFF; /* White background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            margin: 20px auto;
+            position: relative;
+            max-width: 600px; /* Limit form width */
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"] {
+            width: calc(100% - 20px); /* Adjusted width */
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-top: 5px; /* Added margin */
+        }
+        .add-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%; /* Button width */
+        }
+        .add-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="dropdown">
+            <span class="dropdown-icon">≡</span>
+            <div class="dropdown-content">
+                <a href="home.html">Home</a>
+                <a href="schedule.html">Today's Schedule</a>
+                <a href="addclasses.html">Add Classes</a>
+                <a href="findfriends.html">Find Friends</a>
+            </div>
+        </div>
+        <h1>Niner Connect</h1>
+        <img src="profile_icon.png" alt="Profile Icon" class="profile-icon" onclick="window.location.href='profile.html';">
+    </div>
+    <div class="pagetitle">
+        <h2>Add Classes</h2>
+    </div>
+    <div class="add-form">
+        <form id="class-form">
+            <div class="form-group">
+                <label for="class-name">Class Name:</label>
+                <input type="text" id="class-name" name="class-name" placeholder="Enter class name...">
+            </div>
+            <div class="form-group">
+                <label for="class-section">Class Section:</label>
+                <input type="text" id="class-section" name="class-section" placeholder="Enter class section...">
+            </div>
+            <div class="form-group">
+                <label for="times">Times:</label>
+                <input type="text" id="times" name="times" placeholder="Enter times...">
+            </div>
+            <div class="form-group">
+                <label for="dates">Dates:</label>
+                <input type="text" id="dates" name="dates" placeholder="Enter dates...">
+            </div>
+            <div class="form-group">
+                <label for="crn">CRN:</label>
+                <input type="text" id="crn" name="crn" placeholder="Enter CRN...">
+            </div>
+            <button type="submit" class="add-button">Add</button>
+        </form>
+    </div>
+</body>
+</html>
+

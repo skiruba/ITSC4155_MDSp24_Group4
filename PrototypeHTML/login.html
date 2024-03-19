@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niner Connect - Login/Signup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0c5c12; /* UNC Charlotte green */
+            color: #FFFFFF; /* White text */
+            margin: 0;
+            padding: 0;
+        }
+        .banner {
+            background-color: #737706; /* UNC Charlotte green */
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            background-color: #FFFFFF; /* White background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 320px; /* Increased width for better spacing */
+            margin: 20px auto;
+            text-align: center;
+        }
+        input[type="text"],
+        input[type="password"],
+        .loginButton {
+            width: calc(100% - 20px); /* Adjusted width to account for padding */
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            display: block; /* Ensure each input is on its own line */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+        .loginButton {
+            background-color: #0c5c12; /* UNC Charlotte green */
+            color: #FFFFFF; /* White text */
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none; /* Remove underline */
+        }
+        .loginButton:hover {
+            background-color: #08540d; /* Darker green on hover */
+        }
+        a {
+            color: #0c5c12; /* UNC Charlotte green */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <h1>Niner Connect</h1>
+    </div>
+    <div class="container">
+        <h2>Login</h2>
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <a href="home.html" class="loginButton">Login</a> <!-- Anchor tag styled like a button -->
+        <p>Don't have an account? <a href="#">Sign up</a></p>
+    </div>
+</body>
+</html>
+
+
+
+
