@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niner Connect - Find Friends</title>
+    <style>
+        /* Your existing styles here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0c5c12; /* UNC Charlotte green */
+            color: #FFFFFF; /* White text */
+            margin: 0;
+            padding: 0;
+        }
+        .banner {
+            background-color: #737706; /* UNC Charlotte green */
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .banner h1 {
+            margin: 0; /* Reset margin */
+        }
+        .dropdown {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+        }
+        .dropdown-icon {
+            font-size: 24px;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 5px 0;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .profile-icon {
+            position: absolute;
+            top: 10px;
+            right: 50px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        .pagetitle {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .friends-container {
+            background-color: #FFFFFF; /* White background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            margin: 20px auto;
+            position: relative;
+            max-width: 600px; /* Limit container width */
+        }
+        .filter-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        .filter-button:hover {
+            background-color: #45a049;
+        }
+        .friend {
+            margin-bottom: 20px;
+        }
+        .friend-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .friend-name {
+            margin-right: auto; /* Push filter button to right */
+            font-weight: bold;
+            color: #000000; /* Black text */
+        }
+        .friend-picture {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .add-friend-button {
+            background-color: #008CBA;
+            color: white;
+            padding: 6px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .add-friend-button:hover {
+            background-color: #005f78;
+        }
+        .common-classes {
+            margin-left: 60px; /* Space for profile picture */
+            color: #000000; /* Black text */
+        }
+        .common-classes ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .search-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .search-box {
+            width: 50%; /* Adjust width as needed */
+            padding: 10px;
+            box-sizing: border-box;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            background-color: #f8f8f8;
+            color: #333;
+            font-size: 16px;
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="dropdown">
+            <span class="dropdown-icon">≡</span>
+            <div class="dropdown-content">
+                <a href="home.html">Home</a>
+                <a href="schedule.html">Today's Schedule</a>
+                <a href="addclasses.html">Add Classes</a>
+                <a href="findfriends.html">Find Friends</a>
+                <a href="myfriends.html">My Friends</a>
+            </div>
+        </div>
+        <h1>Niner Connect</h1>
+        <img src="profile_icon.png" alt="Profile Icon" class="profile-icon" onclick="window.location.href='profile.html';">
+    </div>
+    <div class="pagetitle">
+        <h2>Find Friends</h2>
+    </div>
+    <div class="search-container">
+        <input type="text" class="search-box" placeholder="Search friends...">
+    </div>
+    <div class="friends-container">
+        <button class="filter-button">Filter</button>
+        <div class="friend" style="margin-top: 50px;">
+            <div class="friend-info">
+                <img src="profile_icon.png" alt="Profile Picture" class="friend-picture">
+                <div class="friend-name">John Doe</div>
+                <button class="add-friend-button">Add Friend</button>
+            </div>
+            <div class="common-classes">
+                <p>Classes in Common:</p>
+                <ul>
+                    <li>Combinatorics</li>
+                    <li>Data Structures</li>
+                </ul>
+            </div>
+        </div>
+        <div class="friend">
+            <div class="friend-info">
+                <img src="profile_icon.png" alt="Profile Picture" class="friend-picture">
+                <div class="friend-name">Jane Smith</div>
+                <button class="add-friend-button">Add Friend</button>
+            </div>
+            <div class="common-classes">
+                <p>Classes in Common:</p>
+                <ul>
+                    <li>Calculus 1</li>
+                    <li>Algebra 2</li>
+                </ul>
+            </div>
+        </div>
+        <!-- Add more friends as needed -->
+    </div>
+</body>
+</html>
+

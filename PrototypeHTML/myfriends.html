@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niner Connect - My Friends</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0c5c12; /* UNC Charlotte green */
+            color: #FFFFFF; /* White text */
+            margin: 0;
+            padding: 0;
+        }
+        .banner {
+            background-color: #737706; /* UNC Charlotte green */
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .banner h1 {
+            margin: 0; /* Remove default margin */
+        }
+        .pagetitle {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .container {
+            background-color: #FFFFFF; /* White background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .friend {
+            border-bottom: 1px solid #CCCCCC; /* Gray border between friends */
+            padding-bottom: 10px;
+            margin-bottom: 10px; /* Add space between friends */
+        }
+        .friend:last-child {
+            border-bottom: none; /* Remove border for last friend */
+            padding-bottom: 0;
+            margin-bottom: 0; /* Remove space after last friend */
+        }
+        .friend-profile {
+            display: flex;
+            align-items: center;
+        }
+        .friend-profile img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%; /* Rounded profile picture */
+            margin-right: 20px; /* Add space between picture and text */
+        }
+        .friend-info {
+            flex: 1; /* Take up remaining space */
+        }
+        .friend-info h3 {
+            margin: 0; /* Remove default margin for headings */
+            color: #000; /* Black text */
+        }
+        .friend-info p {
+            margin: 5px 0; /* Add space between paragraphs */
+            color: #000; /* Black text */
+        }
+        .dropdown {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+        }
+        .dropdown-icon {
+            font-size: 24px;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 5px 0;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .profile-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer; /* Make the profile icon clickable */
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="dropdown">
+            <span class="dropdown-icon">≡</span>
+            <div class="dropdown-content">
+                <a href="home.html">Home</a>
+                <a href="schedule.html">Today's Schedule</a>
+                <a href="addclasses.html">Add Classes</a>
+                <a href="findfriends.html">Find Friends</a>
+                <a href="profile.html">Profile</a>
+                <a href="myfriends.html">My Friends</a>
+            </div>
+        </div>
+        <h1>Niner Connect</h1>
+        <img src="profile_icon.png" alt="Profile Icon" class="profile-icon" onclick="window.location.href='profile.html';">
+    </div>
+    <div class="pagetitle">
+        <h2>My Friends</h2>
+    </div>
+    <div class="container">
+        <div class="friend">
+            <div class="friend-profile">
+                <img src="profile_icon.png" alt="Profile Picture">
+                <div class="friend-info">
+                    <h3>John Doe</h3>
+                    <p>Classes in Common: Math 101, English 102</p>
+                    <p>Friends Since: January 1, 2023</p>
+                    <p>Free Times: Monday 2:00 PM - 4:00 PM, Wednesday 10:00 AM - 12:00 PM</p>
+                </div>
+            </div>
+        </div>
+        <div class="friend">
+            <div class="friend-profile">
+                <img src="profile_icon.png" alt="Profile Picture">
+                <div class="friend-info">
+                    <h3>Jane Smith</h3>
+                    <p>Classes in Common: Biology 101, Chemistry 102</p>
+                    <p>Friends Since: February 15, 2023</p>
+                    <p>Free Times: Tuesday 1:00 PM - 3:00 PM, Thursday 9:00 AM - 11:00 AM</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
