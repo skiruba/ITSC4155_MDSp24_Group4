@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niner Connect - Sign Up</title>
+    <style>
+        /* CSS styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0c5c12; /* UNC Charlotte green */
+            color: #FFFFFF; /* White text */
+            margin: 0;
+            padding: 0;
+        }
+        .banner {
+            background-color: #737706; /* UNC Charlotte green */
+            padding: 10px;
+            text-align: center;
+        }
+        .container {
+            background-color: #FFFFFF; /* White background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 320px; /* Increased width for better spacing */
+            margin: 20px auto;
+            text-align: left;
+        }
+        input[type="text"],
+        input[type="password"],
+        .signupButton {
+            width: calc(100% - 20px); /* Adjusted width to account for padding */
+            padding: 10px;
+            margin: 5px 0;
+            border: none;
+            border-radius: 5px;
+            display: block; /* Ensure each input is on its own line */
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+        .signupButton {
+            background-color: #0c5c12; /* UNC Charlotte green */
+            color: #FFFFFF; /* White text */
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none; /* Remove underline */
+            margin-top: 10px; /* Add space between input fields and button */
+        }
+        .signupButton:hover {
+            background-color: #08540d; /* Darker green on hover */
+        }
+        a {
+            color: #0c5c12; /* UNC Charlotte green */
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .signup-title {
+            font-size: 24px;
+            margin-bottom: 20px; /* Add spacing between "Sign Up" and the input fields */
+            color: #000; /* Black text */
+            text-align: center; /* Center the title */
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <h1>Niner Connect</h1>
+    </div>
+    <div class="container">
+        <h2 class="signup-title">Sign Up</h2> <!-- Added Sign Up text with a class -->
+        <input type="text" name="fullname" placeholder="Full Name" required>
+        <input type="text" name="email" placeholder="Email Address" required>
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="submit" value="Sign Up" class="signupButton"> <!-- Changed button text and class -->
+        <p>Already have an account? <a href="login.html">Log in</a></p> <!-- Updated anchor tag -->
+    </div>
+</body>
+</html>
+
