@@ -32,7 +32,7 @@ public class Student {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
-        this.password = password;
+        setPassword(password); // Hash password before storing
         this.major = major;
         this.profileImage = profileImage;
         this.bio = bio;
