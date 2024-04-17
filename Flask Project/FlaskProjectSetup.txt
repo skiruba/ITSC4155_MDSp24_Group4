@@ -1,0 +1,61 @@
+In project directory...
+
+1. Create virtual environment 
+python3 -m venv venv
+
+source venv/bin/activate
+
+2. Install necessary packages
+pip install flask
+pip install flask-sqlalchemy
+pip install pymysql
+
+
+
+Config.py setup instructions:
+
+	class Config:
+    		SECRET_KEY = '1234123412341234'
+    		SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://username:password@localhost/mydatabase'
+    		SQLALCHEMY_TRACK_MODIFICATIONS = False  # to disable a feature which consumes memory
+
+
+Create db in mysql workbench from models.py:
+
+1. Make sure config.py is properly connected to your mysql workbench database
+
+2. Open MySQL Workbench and connect to your MySQL server. Execute the following SQL command to create a new database:
+
+	CREATE DATABASE db_name;
+
+4. Then in console,
+
+	python init_db.py
+
+
+
+To run flask app:
+
+1. export FLASK_APP=run.py
+
+2. flask run
+
+
+Project structure:
+
+/college_scheduler
+    /app
+        __init__.py
+        models.py
+        routes.py
+        /templates
+            login.html
+            register.html
+    config.py
+    run.py
+
+
+Test db connection: 
+
+1. python test_db.py
+
