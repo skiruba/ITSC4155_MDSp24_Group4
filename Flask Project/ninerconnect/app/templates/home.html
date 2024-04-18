@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Niner Connect - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #0c5c12; /* UNC Charlotte green */
+            color: #FFFFFF; /* White text */
+            margin: 0;
+            padding: 0;
+        }
+        .banner {
+            background-color: #737706; /* UNC Charlotte green */
+            padding: 10px;
+            text-align: center;
+            position: relative;
+        }
+        .banner h1 {
+            margin: 0 auto; /* Center the Niner Connect label */
+        }
+        .pagetitle {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .container {
+            background-color: #FFFFFF; /* White background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            margin: 20px auto;
+            text-align: center;
+        }
+        .button {
+            display: block;
+            width: 300px;
+            padding: 20px;
+            margin: 20px auto;
+            background-color: #0c5c12; /* UNC Charlotte green */
+            color: #FFFFFF; /* White text */
+            border: none;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .button:hover {
+            background-color: #08540d; /* Darker green on hover */
+        }
+        .dropdown {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+        }
+        .dropdown-icon {
+            font-size: 24px;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 5px 0;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .profile-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer; /* Make the profile icon clickable */
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <div class="dropdown">
+            <span class="dropdown-icon">≡</span>
+            <div class="dropdown-content">
+                <a href="{{ url_for('main.home') }}">Home</a>
+               
+                 <a href="{{ url_for('main.add_course') }}">Add Classes</a> 
+               
+               
+            </div>
+        </div>
+        <h1><a href="{{ url_for('main.home') }}">Niner Connect</a></h1>
+
+    </div>
+    <div class="pagetitle">
+        <h2>Home</h2>
+    </div>
+    <div class="container">
+        <h2>Welcome to Niner Connect</h2>
+        
+        <a href="{{ url_for('main.add_course') }}" class="button">Add Classes</a>
+       
+    </div>
+</body>
+</html>
+
+
+
+
+
+

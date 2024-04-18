@@ -1,5 +1,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask import request, redirect, url_for, flash, render_template
+
 
 from . import db
 
@@ -11,38 +13,24 @@ class Student(db.Model):
     email = db.Column(db.String(100), unique=True, nullable=False)
     year_of_graduation = db.Column(db.Integer, nullable=False)
     major = db.Column(db.String(100), nullable=False)
-    password_hash = db.Column(db.String(128), nullable=False)
     username = db.Column(db.String(50), unique=True, nullable=False)
-    profile = db.relationship('Profile', back_populates='student', uselist=False, lazy='joined')
-    friends = db.relationship('Friend', backref='student', lazy=True)
-    enrollments = db.relationship('Enrollment', back_populates='student')
+    password_hash = db.Column(db.String(255), nullable=False)
 
-class Profile(db.Model):
-    __tablename__ = 'profile'
-    id = db.Column(db.Integer, primary_key=True)
-    student_id = db.Column(db.Integer, db.ForeignKey('student.student_id'), unique=True)
-    biography = db.Column(db.Text)
-    student = db.relationship('Student', back_populates='profile')
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
 
-class Friend(db.Model):
-    __tablename__ = 'friends'
-    id = db.Column(db.Integer, primary_key=True)
-    student_id = db.Column(db.Integer, db.ForeignKey('student.student_id'))
-    friend_id = db.Column(db.Integer, db.ForeignKey('student.student_id'))
-    status = db.Column(db.String(10), nullable=False, default='requested')
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
 
 class Course(db.Model):
     __tablename__ = 'course'
-    crn = db.Column(db.Integer, primary_key=True)
-    course_title = db.Column(db.String(100), nullable=False)
-    professor = db.Column(db.String(100), nullable=False)
-    days_of_week = db.Column(db.String(50), nullable=False)
-    class_time = db.Column(db.String(50), nullable=False)
-    enrollments = db.relationship('Enrollment', back_populates='course')
+    id = db.Column(db.Integer, primary_key=True)
+    course_prefix = db.Column(db.String(10), nullable=False)
+    course_number = db.Column(db.Integer, nullable=False)
+    course_professor = db.Column(db.String(100), nullable=False)
+    student_email = db.Column(db.String(100), db.ForeignKey('student.email'))
+    student = db.relationship('Student', back_populates='courses')
 
-class Enrollment(db.Model):
-    __tablename__ = 'enrollment'
-    student_id = db.Column(db.Integer, db.ForeignKey('student.student_id'), primary_key=True)
-    crn = db.Column(db.Integer, db.ForeignKey('course.crn'), primary_key=True)
-    student = db.relationship('Student', back_populates='enrollments')
-    course = db.relationship('Course', back_populates='enrollments')
+Student.courses = db.relationship('Course', back_populates='student', order_by=Course.id)
+
+
