@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niner Connect - Home</title>
+    <title>Niner Connect - Find Friends</title>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -17,38 +18,6 @@
             padding: 10px;
             text-align: center;
             position: relative;
-        }
-        .banner h1 {
-            margin: 0 auto; /* Center the Niner Connect label */
-        }
-        .pagetitle {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .container {
-            background-color: #FFFFFF; /* White background */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            margin: 20px auto;
-            text-align: center;
-        }
-        .button {
-            display: block;
-            width: 300px;
-            padding: 20px;
-            margin: 20px auto;
-            background-color: #0c5c12; /* UNC Charlotte green */
-            color: #FFFFFF; /* White text */
-            border: none;
-            border-radius: 10px;
-            text-decoration: none;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .button:hover {
-            background-color: #08540d; /* Darker green on hover */
         }
         .dropdown {
             position: absolute;
@@ -70,7 +39,7 @@
             border-radius: 5px;
         }
         .dropdown-content a {
-            color: black;
+            color: black; /* Change link color to black */
             padding: 5px 0;
             text-decoration: none;
             display: block;
@@ -88,9 +57,21 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            cursor: pointer; /* Make the profile icon clickable */
+            cursor: pointer;
+        }
+
+        /* Change text color in data table */
+        #courses-table td {
+            color: black;
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#courses-table').DataTable();
+        });
+    </script>
 </head>
 <body>
     <div class="banner">
@@ -98,27 +79,40 @@
             <span class="dropdown-icon">≡</span>
             <div class="dropdown-content">
                 <a href="{{ url_for('main.home') }}">Home</a>
-               
-                 <a href="{{ url_for('main.add_course') }}">Add Classes</a> 
-               
-               
+                <a href="{{ url_for('main.add_course') }}">Add Classes</a>
+                <a href="{{ url_for('main.find_friends') }}">Find Friends</a>
             </div>
         </div>
-        <h1><a href="{{ url_for('main.home') }}">Niner Connect</a></h1>
-
+        <h1>Niner Connect</h1>
+        <img src="profile_icon.png" alt="Profile Icon" class="profile-icon" onclick="window.location.href='profile.html';">
     </div>
-    <div class="pagetitle">
-        <h2>Home</h2>
-    </div>
-    <div class="container">
-        <h2>Welcome to Niner Connect</h2>
-        
-        <a href="{{ url_for('main.add_course') }}" class="button">Add Classes</a>
-        <a href="{{ url_for('main.find_friends') }}" class="button">Find Friends</a>
-       
-    </div>
+    <h1>Find Friends</h1>
+    <p>View all courses and associated student emails below.</p>
+    <table id="courses-table" class="display">
+        <thead>
+            <tr>
+                <th>Course Prefix</th>
+                <th>Course Number</th>
+                <th>Course Professor</th>
+                <th>Student Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for course in courses %}
+            <tr>
+                <td>{{ course.course_prefix }}</td>
+                <td>{{ course.course_number }}</td>
+                <td>{{ course.course_professor }}</td>
+                <td>{{ course.student_email }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
+
+
+
 
 
 

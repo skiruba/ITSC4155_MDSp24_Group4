@@ -1,4 +1,4 @@
-from flask import Blueprint, flash, render_template, redirect, url_for, request, session
+from flask import Blueprint, flash, render_template, redirect, url_for, request, session, jsonify
 from .models import Course, db, Student
 
 main = Blueprint('main', __name__)
@@ -79,17 +79,28 @@ def add_course():
 
         new_course = Course(
             course_prefix=course_prefix,
-            course_number=int(course_number),  # Ensuring the number is stored as an integer
+            course_number=int(course_number),
             course_professor=course_professor,
-            student_email=student.email  # Linking the course to the student via email
+            student_email=student.email
         )
         db.session.add(new_course)
         db.session.commit()
         flash('Course added successfully!', 'success')
     
-    # Fetch courses each time the page is loaded or refreshed to update the course list
     courses = Course.query.filter_by(student_email=student.email).all()
     return render_template('add_course.html', courses=courses)
+
+@main.route('/find_friends')
+def find_friends():
+    if 'email' not in session:
+        flash('You must be logged in to access this page.', 'warning')
+        return redirect(url_for('main.login'))
+
+    # Retrieve data from the database
+    courses = Course.query.all()
+
+    # Render the template with the retrieved data
+    return render_template('find_friends.html', courses=courses)
 
 
 
