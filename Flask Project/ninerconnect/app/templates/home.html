@@ -98,27 +98,25 @@
             <span class="dropdown-icon">≡</span>
             <div class="dropdown-content">
                 <a href="{{ url_for('main.home') }}">Home</a>
-               
-                 <a href="{{ url_for('main.add_course') }}">Add Classes</a> 
-               
-               
+                <a href="{{ url_for('main.add_course') }}">Add Classes</a>
+                <a href="{{ url_for('main.find_friends') }}">Find Friends</a>
+                <a href="{{ url_for('main.profile') }}">Profile</a>
             </div>
         </div>
-        <h1><a href="{{ url_for('main.home') }}">Niner Connect</a></h1>
-
+        <h1>Niner Connect</h1>
+        <a href="{{ url_for('main.profile') }}"><img src="/static/profile_icon.png" alt="Profile Icon" class="profile-icon"></a>
     </div>
     <div class="pagetitle">
         <h2>Home</h2>
     </div>
     <div class="container">
         <h2>Welcome to Niner Connect</h2>
-        
         <a href="{{ url_for('main.add_course') }}" class="button">Add Classes</a>
         <a href="{{ url_for('main.find_friends') }}" class="button">Find Friends</a>
-       
     </div>
 </body>
 </html>
+
 
 
 

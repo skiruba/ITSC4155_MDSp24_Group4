@@ -121,6 +121,20 @@ def remove_course(course_id):
 
     return render_template('remove_course.html', course=course)
 
+@main.route('/profile')
+def profile():
+    if 'email' not in session:
+        flash('You must be logged in to view your profile.', 'warning')
+        return redirect(url_for('main.login'))
+
+    user = Student.query.filter_by(email=session['email']).first()
+    if not user:
+        flash('User not found. Please log in again.', 'error')
+        return redirect(url_for('main.login'))
+
+    return render_template('profile.html', user=user)
+
+
 
 
 
