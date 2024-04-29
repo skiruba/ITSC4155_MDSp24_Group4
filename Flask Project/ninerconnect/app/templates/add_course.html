@@ -154,6 +154,9 @@
                 {% for course in courses %}
                 <li>
                     {{ course.course_prefix }} {{ course.course_number }} - {{ course.course_professor }}
+                    <form action="{{ url_for('main.remove_course', course_id=course.id) }}" method="post">
+                        <button type="submit">Remove</button>
+                    </form>
                 </li>
                 {% else %}
                 <li>No courses added yet.</li>

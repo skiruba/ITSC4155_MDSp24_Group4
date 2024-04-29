@@ -102,6 +102,25 @@ def find_friends():
     # Render the template with the retrieved data
     return render_template('find_friends.html', courses=courses)
 
+@main.route('/remove_course/<int:course_id>', methods=['GET', 'POST'])
+def remove_course(course_id):
+    if 'email' not in session:
+        flash('You must be logged in to remove a course.', 'warning')
+        return redirect(url_for('main.login'))
+
+    course = Course.query.get(course_id)
+    if course is None:
+        flash('Course not found.', 'error')
+        return redirect(url_for('main.add_course'))
+
+    if request.method == 'POST':
+        db.session.delete(course)
+        db.session.commit()
+        flash('Course removed successfully!', 'success')
+        return redirect(url_for('main.add_course'))
+
+    return render_template('remove_course.html', course=course)
+
 
 
 
