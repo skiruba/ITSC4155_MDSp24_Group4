@@ -6,6 +6,14 @@
     <title>Niner Connect - Login/Signup</title>
     <style>
         /* CSS styles */
+        .flash-message {
+            background-color: #007bff; 
+            color: #FFFFFF; /* White text */
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px auto; /* Center horizontally and add space around */
+            max-width: 400px; /* Adjust maximum width as needed */
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #0c5c12; /* UNC Charlotte green */
@@ -23,7 +31,7 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 320px; /* Increased width for better spacing */
+            width: 320px;
             margin: 20px auto;
             text-align: center;
         }
@@ -36,14 +44,14 @@
             border: none;
             border-radius: 5px;
             display: block; /* Ensure each input is on its own line */
-            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            box-sizing: border-box; 
         }
         .loginButton {
             background-color: #0c5c12; /* UNC Charlotte green */
             color: #FFFFFF; /* White text */
             cursor: pointer;
             text-align: center;
-            text-decoration: none; /* Remove underline */
+            text-decoration: none;
             margin-top: 10px; /* Add space between input fields and button */
         }
         .loginButton:hover {
@@ -72,8 +80,7 @@
         <h1>Niner Connect</h1>
     </div>
     <div class="container">
-        <h2 class="login-title">Log In</h2> <!-- Added Log In text with a class -->
-<!-- Existing content remains unchanged -->
+        <h2 class="login-title">Log In</h2>
         <form action="{{ url_for('main.login') }}" method="post">
             <input type="text" name="username" placeholder="Username" required>
             <input type="password" name="password" placeholder="Password" required>
@@ -81,5 +88,32 @@
         </form>
         <p class="create-account-text">Don't have an account? <a href="{{ url_for('main.signup') }}">Sign up</a></p>
     </div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div>
+                {% for message in messages %}
+                    <div class="flash-message">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <script>
+        // Function to remove flashed messages after a certain time
+        function removeFlashedMessages() {
+            var messages = document.querySelectorAll('.flash-message');
+            messages.forEach(function(message) {
+                setTimeout(function() {
+                    message.remove();
+                }, 5000); // Adjust the time as needed
+            });
+        }
+    
+        // Call the function when the page loads
+        window.addEventListener('DOMContentLoaded', function() {
+            removeFlashedMessages();
+        });
+    </script>
 </body>
 </html>

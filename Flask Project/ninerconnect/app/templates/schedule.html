@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niner Connect - Home</title>
+    <title>Niner Connect - Today's Schedule</title>
     <style>
         .flash-message {
-            background-color: #007bff; 
+            background-color: #007bff;
             color: #FFFFFF; /* White text */
             padding: 10px;
             border-radius: 5px;
@@ -22,43 +22,13 @@
         }
         .banner {
             background-color: #737706; /* UNC Charlotte green */
+            color: #FFFFFF; /* White text */
             padding: 10px;
             text-align: center;
             position: relative;
         }
         .banner h1 {
-            margin: 0 auto; /* Center the Niner Connect label */
-        }
-        .pagetitle {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .container {
-            background-color: #FFFFFF; /* White background */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            margin: 20px auto;
-            text-align: center;
-            position: relative;
-            max-width: 600px; /* Limit form width */
-        }
-        .button {
-            display: block;
-            width: 300px;
-            padding: 20px;
-            margin: 20px auto;
-            background-color: #0c5c12; /* UNC Charlotte green */
-            color: #FFFFFF; /* White text */
-            border: none;
-            border-radius: 10px;
-            text-decoration: none;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .button:hover {
-            background-color: #08540d; /* Darker green on hover */
+            margin: 0; /* Reset margin */
         }
         .dropdown {
             position: absolute;
@@ -86,7 +56,7 @@
             display: block;
         }
         .dropdown-content a:hover {
-            background-color: #f1f1f1;
+            background-color: #ddd; /* Light gray */
         }
         .dropdown:hover .dropdown-content {
             display: block;
@@ -100,11 +70,38 @@
             border-radius: 50%;
             cursor: pointer;
         }
-        .container h2 {
-            color: #000000; /* Black text */
+        .pagetitle {
+            text-align: center;
+            margin-top: 20px;
+            color: #FFFFFF; /* White text */
         }
-        .container h3 {
+        .schedule {
+            background-color: #FFFFFF; /* White background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            margin: 20px auto;
+            position: relative;
             color: #000000; /* Black text */
+            max-width: 600px; /* Limit the width */
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        .schedule h3 {
+            margin-top: 0;
+        }
+        .schedule ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .schedule ul li {
+            margin-bottom: 10px;
+        }
+        .schedule h4 {
+            margin-top: 20px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -125,17 +122,28 @@
         <a href="{{ url_for('main.profile') }}"><img src="/static/profile_icon.png" alt="Profile Icon" class="profile-icon"></a>
     </div>
     <div class="pagetitle">
-        <h2>Home</h2>
+        <h2>View Schedules</h2>
     </div>
-    <div class="container">
-        <h2>Welcome to Niner Connect!</h2>
-        <h3>Niner Connect is a tool for students to find other students with classes in common. Feel free to add your course schedule, find friends, add friends, and reach out to your peers once you find friends!</h3>
-        <a href="{{ url_for('main.add_course') }}" class="button">Add Courses</a>
-        <a href="{{ url_for('main.find_friends') }}" class="button">Find Friends</a>
-        <a href="{{ url_for('main.my_friends') }}" class="button">Add Friends</a>
-        <a href="{{ url_for('main.schedule') }}" class="button">View Schedule</a>
+    <div class="schedule">
+            <h3>Your Classes:</h3>
+            <ul>
+                {% for course in user_courses %}
+                <li>{{ course.course_prefix }} {{ course.course_number }} - {{ course.course_professor }}</li>
+                {% endfor %}
+            </ul>
+            
+            <h3>Your Friends' Classes:</h3>
+            {% for friend_data in friends_data %}
+            <h4>{{ friend_data.friend.first_name }} {{ friend_data.friend.last_name }}</h4>
+            <h5> {{ friend_data.friend.email }}</h5>
+            <ul>
+                {% for course in friend_data.courses %}
+                <li>{{ course.course_prefix }} {{ course.course_number }} - {{ course.course_professor }}</li>
+                {% endfor %}
+            </ul>
+            {% endfor %}
     </div>
-
+    
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             <div>
@@ -163,12 +171,6 @@
         });
     </script>
 </body>
+</body>
 </html>
-
-
-
-
-
-
-
 

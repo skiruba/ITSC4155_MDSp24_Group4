@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Niner Connect - Home</title>
+    <title>Niner Connect - My Friends</title>
     <style>
         .flash-message {
             background-color: #007bff; 
@@ -27,38 +27,7 @@
             position: relative;
         }
         .banner h1 {
-            margin: 0 auto; /* Center the Niner Connect label */
-        }
-        .pagetitle {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .container {
-            background-color: #FFFFFF; /* White background */
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 80%;
-            margin: 20px auto;
-            text-align: center;
-            position: relative;
-            max-width: 600px; /* Limit form width */
-        }
-        .button {
-            display: block;
-            width: 300px;
-            padding: 20px;
-            margin: 20px auto;
-            background-color: #0c5c12; /* UNC Charlotte green */
-            color: #FFFFFF; /* White text */
-            border: none;
-            border-radius: 10px;
-            text-decoration: none;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        .button:hover {
-            background-color: #08540d; /* Darker green on hover */
+            margin: 0;
         }
         .dropdown {
             position: absolute;
@@ -100,11 +69,58 @@
             border-radius: 50%;
             cursor: pointer;
         }
-        .container h2 {
-            color: #000000; /* Black text */
+        .pagetitle {
+            text-align: center;
+            margin-top: 20px;
         }
-        .container h3 {
-            color: #000000; /* Black text */
+        .add-form {
+            background-color: #FFFFFF; /* White background */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            margin: 20px auto;
+            position: relative;
+            max-width: 600px; /* Limit form width */
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="email"] {
+            width: calc(100% - 20px); /* Adjusted width */
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            margin-top: 5px; /* Added margin */
+        }
+        .add-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%; /* Button width */
+        }
+        .add-button:hover {
+            background-color: #45a049;
+        }
+        .friends-list {
+            margin-top: 20px;
+            text-align: center;
+            color: #FFFFFF; /* White text */
+        }
+        .friends-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .friends-list li {
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -122,18 +138,33 @@
             </div>
         </div>
         <h1>Niner Connect</h1>
-        <a href="{{ url_for('main.profile') }}"><img src="/static/profile_icon.png" alt="Profile Icon" class="profile-icon"></a>
+        <a href="{{ url_for('main.profile') }}">
+            <img src="static/profile_icon.png" alt="Profile Icon" class="profile-icon">
+        </a>
     </div>
     <div class="pagetitle">
-        <h2>Home</h2>
+        <h2>My Friends</h2>
     </div>
-    <div class="container">
-        <h2>Welcome to Niner Connect!</h2>
-        <h3>Niner Connect is a tool for students to find other students with classes in common. Feel free to add your course schedule, find friends, add friends, and reach out to your peers once you find friends!</h3>
-        <a href="{{ url_for('main.add_course') }}" class="button">Add Courses</a>
-        <a href="{{ url_for('main.find_friends') }}" class="button">Find Friends</a>
-        <a href="{{ url_for('main.my_friends') }}" class="button">Add Friends</a>
-        <a href="{{ url_for('main.schedule') }}" class="button">View Schedule</a>
+    <div class="add-form">
+        <form id="friend-form" action="{{ url_for('main.add_friend') }}" method="post">
+            <div class="form-group">
+                <label for="friend-email">Friend's Email:</label>
+                <input type="email" id="friend-email" name="friend_email" placeholder="Enter friend's email">
+            </div>
+            <button type="submit" class="add-button">Add Friend</button>
+        </form>
+    </div>
+    <div class="friends-list">
+        <h3>Your Friends:</h3>
+        <ul>
+            {% for friend in friends %}
+                <li>{{ friend.first_name }} {{ friend.last_name }} - {{ friend.email }}
+                    <form method="post" action="{{ url_for('main.remove_friend', friend_id=friend.student_id) }}" style="display: inline;">
+                        <button type="submit" class="remove-button">Remove</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
     </div>
 
     {% with messages = get_flashed_messages() %}
@@ -164,6 +195,9 @@
     </script>
 </body>
 </html>
+
+
+
 
 
 

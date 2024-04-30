@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Niner Connect - Add Classes</title>
     <style>
+        .flash-message {
+            background-color: #007bff; /* Bootstrap's primary color */
+            color: #FFFFFF; /* White text */
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px auto; /* Center horizontally and add space around */
+            max-width: 400px; /* Adjust maximum width as needed */
+        }
         body {
             font-family: Arial, sans-serif;
             background-color: #0c5c12; /* UNC Charlotte green */
@@ -105,7 +113,7 @@
         .courses-list {
             margin-top: 20px;
             text-align: center;
-            color: #0c5c12; /* This will set the text color to UNC Charlotte green, or choose a color that fits your design */
+            color: #0c5c12; 
         }
     </style>
 </head>
@@ -116,7 +124,10 @@
             <div class="dropdown-content">
                 <a href="{{ url_for('main.home') }}">Home</a>
                 <a href="{{ url_for('main.profile') }}">Profile</a>
+                <a href="{{ url_for('main.add_course') }}">Add Courses</a>
                 <a href="{{ url_for('main.find_friends') }}">Find Friends</a>
+                <a href="{{ url_for('main.my_friends') }}">Add Friends</a>
+                <a href="{{ url_for('main.schedule') }}">View Schedule</a>
             </div>
         </div>
         <h1>Niner Connect</h1>
@@ -159,6 +170,33 @@
             </ul>
         </div>
     </div>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div>
+                {% for message in messages %}
+                    <div class="flash-message">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <script>
+        // Function to remove flashed messages after a certain time
+        function removeFlashedMessages() {
+            var messages = document.querySelectorAll('.flash-message');
+            messages.forEach(function(message) {
+                setTimeout(function() {
+                    message.remove();
+                }, 5000); // Adjust the time as needed
+            });
+        }
+    
+        // Call the function when the page loads
+        window.addEventListener('DOMContentLoaded', function() {
+            removeFlashedMessages();
+        });
+    </script>
 </body>
 </html>
 
