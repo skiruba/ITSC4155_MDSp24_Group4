@@ -1,11 +1,15 @@
-In project directory...
+This is a flask application utilizing flask, MySql Workbench, HTML, CSS, and Flask Alchemy
+Created on Mac Sonoma
 
-1. Create virtual environment 
-python3 -m venv venv
+Create virtual environment:
 
-source venv/bin/activate
+1. Navigate to project directory in console
 
-2. Install necessary packages
+2. Create virtual environment: python3 -m venv venv
+
+3. Activate virtual environment: source venv/bin/activate
+
+2. Install necessary packages:
 pip install flask
 pip install flask-sqlalchemy
 pip install pymysql
@@ -17,7 +21,7 @@ Config.py setup instructions:
 	class Config:
     		SECRET_KEY = '1234123412341234'
     		SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://username:password@localhost/mydatabase'
-    		SQLALCHEMY_TRACK_MODIFICATIONS = False  # to disable a feature which consumes memory
+    		SQLALCHEMY_TRACK_MODIFICATIONS = False  
 
 
 Create db in mysql workbench from models.py:
@@ -38,21 +42,33 @@ To run flask app:
 
 1. export FLASK_APP=run.py
 
-2. flask run
+2. Make sure config.py has proper string to connect to MySQL Workbench database
+
+3. flask run
+
+4. Navigate to http://127.0.0.1:5000 in browser
 
 
 Project structure:
 
-/college_scheduler
+/ninerconnect
     /app
         __init__.py
         models.py
         routes.py
         /templates
             login.html
-            register.html
+            signup.html
+            schedule.html
+            profile.html
+            myfriends.html
+            home.html
+            find_friends.html
+            add_courses.html
     config.py
     run.py
+    test_db.py
+    init_db.py
 
 
 Test db connection: 
